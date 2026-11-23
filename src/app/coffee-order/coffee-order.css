@@ -1,0 +1,18 @@
+.order {
+  max-width: 360px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-family: sans-serif;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.item span { flex: 1; }
+.item button { width: 32px; height: 32px; }
+.discount { color: green; }
+.total { font-size: 20px; font-weight: bold; color: #dd0031; }

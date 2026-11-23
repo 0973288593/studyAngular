@@ -1,0 +1,59 @@
+<div class="todo-app">
+  <h2>✅ Todo List</h2>
+
+  <!-- ช่องเพิ่มงาน -->
+  <div class="add-row">
+    <input #titleBox placeholder="ต้องทำอะไร..."
+           (keyup.enter)="add(titleBox.value, prio.value); titleBox.value = ''" />
+    <select #prio>
+      <option value="low">ต่ำ</option>
+      <option value="medium" selected>กลาง</option>
+      <option value="high">สูง</option>
+    </select>
+    <button (click)="add(titleBox.value, prio.value); titleBox.value = ''">เพิ่ม</button>
+  </div>
+
+  <!-- ปุ่ม filter -->
+  <div class="filters">
+    <button [class.active]="filter() === 'all'" (click)="filter.set('all')">
+      ทั้งหมด ({{ todos().length }})
+    </button>
+    <button [class.active]="filter() === 'active'" (click)="filter.set('active')">
+      ค้างอยู่ ({{ remaining() }})
+    </button>
+    <button [class.active]="filter() === 'done'" (click)="filter.set('done')">
+      เสร็จแล้ว ({{ doneCount() }})
+    </button>
+  </div>
+
+  <!-- รายการ -->
+  <ul>
+    @for (todo of visibleTodos(); track todo.id; let i = $index) {
+      <li [class.done]="todo.done">
+        <input type="checkbox" [checked]="todo.done" (change)="toggle(todo.id)" />
+        <span class="title">{{ i + 1 }}. {{ todo.title }}</span>
+
+        @switch (todo.priority) {
+          @case ('high')   { <span class="badge high">สูง</span> }
+          @case ('medium') { <span class="badge medium">กลาง</span> }
+          @case ('low')    { <span class="badge low">ต่ำ</span> }
+        }
+
+        <button class="delete" (click)="remove(todo.id)">🗑</button>
+      </li>
+    } @empty {
+      <li class="empty">
+        @switch (filter()) {
+          @case ('active') { 🎉 ทำครบหมดแล้ว! }
+          @case ('done')   { ยังไม่มีงานที่เสร็จ }
+          @default         { ยังไม่มีงาน ลองเพิ่มดูสิ }
+        }
+      </li>
+    }
+  </ul>
+
+  <!-- ส่วนท้าย: แสดงเมื่อมีงานที่เสร็จแล้ว -->
+  @if (doneCount() > 0) {
+    <button class="clear" (click)="clearDone()">ลบงานที่เสร็จแล้ว ({{ doneCount() }})</button>
+  }
+</div>

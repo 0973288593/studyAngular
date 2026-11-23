@@ -1,0 +1,38 @@
+<div class="order">
+    <h2>☕ ร้านกาแฟ Angular</h2>
+
+    <div class="item">
+        <span>กาแฟ ({{ COFFEE_PRICE }}฿)</span>
+        <button (click)="change('coffee', -1)" [disabled]="coffeeQty() === 0">−</button>
+        <strong>{{ coffeeQty() }}</strong>
+        <button (click)="change('coffee', 1)">+</button>
+    </div>
+
+    <div class="item">
+        <span>เค้ก ({{ CAKE_PRICE }}฿)</span>
+        <button (click)="change('cake', -1)" [disabled]="cakeQty() === 0">−</button>
+        <strong>{{ cakeQty() }}</strong>
+        <button (click)="change('cake', 1)">+</button>
+    </div>
+    <div class="item">
+        <span>ครัวซองต์ ({{ CROISSANT_PRICE }}฿)</span>
+        <button (click)="change('croissant', -1)" [disabled]="croissantQty() === 0">−</button>
+        <strong>{{ croissantQty() }}</strong>
+        <button (click)="change('croissant', 1)">+</button>
+    </div>
+
+    <label>
+        <input type="checkbox" [checked]="isMember()" (change)="toggleMember()" />
+        เป็นสมาชิก (ลด 10%)
+    </label>
+    <div [style.display]="freeShipping() ? 'block' : 'none'">
+       <p >🚚 ส่งฟรี</p>
+    </div>
+    <hr />
+    <p>จำนวนทั้งหมด: {{ totalItems() }} ชิ้น</p>
+    <p>ราคารวม: {{ subtotal() }} ฿</p>
+    <p class="discount">ส่วนลด: −{{ discount() }} ฿</p>
+    <p class="total">ยอดชำระ: {{ total() }} ฿</p>
+
+    <button (click)="clear()">ล้างรายการ</button>
+</div>

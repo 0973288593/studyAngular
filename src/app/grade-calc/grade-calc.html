@@ -1,0 +1,19 @@
+<div class="box">
+  <h2>📝 เครื่องตัดเกรด</h2>
+  <input #s type="number" min="0" max="100" placeholder="กรอกคะแนน 0-100"
+         (input)="setScore(s.value)" />
+
+  @if (score() === null) {
+    <p class="hint">กรุณากรอกคะแนน</p>
+  } @else if (score()! < 0 || score()! > 100) {
+    <p class="error">คะแนนต้องอยู่ระหว่าง 0-100</p>
+  } @else {
+    @switch (grade()) {
+      @case ('A') { <p class="grade a">A: ยอดเยี่ยม! 🏆</p> }
+      @case ('B') { <p class="grade b">B: ดีมาก 👍</p> }
+      @case ('C') { <p class="grade c">C: ดี</p> }
+      @case ('D') { <p class="grade d">D: ผ่าน</p> }
+      @default    { <p class="grade f">F: ไม่ผ่าน 😢 สู้ต่อนะ!</p> }
+    }
+  }
+</div>

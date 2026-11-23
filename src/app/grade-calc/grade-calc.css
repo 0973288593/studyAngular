@@ -1,0 +1,7 @@
+.box { max-width: 320px; margin: 20px auto; text-align: center; font-family: sans-serif; }
+input { width: 100%; padding: 8px; font-size: 18px; box-sizing: border-box; }
+.hint { color: #888; }
+.error { color: #c00; }
+.grade { font-size: 22px; font-weight: bold; padding: 12px; border-radius: 8px; }
+.a { background: #d4f8d4; } .b { background: #e0f0ff; }
+.c { background: #fff6cc; } .d { background: #ffe6cc; } .f { background: #ffd6d6; }

@@ -1,0 +1,8 @@
+.stopwatch { text-align: center; padding: 20px; }
+.time {
+  font-size: 48px;
+  font-family: monospace;
+  margin-bottom: 16px;
+}
+.buttons { display: flex; gap: 8px; justify-content: center; }
+button { padding: 8px 16px; font-size: 16px; cursor: pointer; }

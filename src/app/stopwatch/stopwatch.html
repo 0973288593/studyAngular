@@ -1,0 +1,9 @@
+<p>stopwatch works!</p>
+<div class="stopwatch">
+  <div class="time">{{ display() }}</div>
+  <div class="buttons">
+    <button (click)="start()" [disabled]="running()">▶ เริ่ม</button>
+    <button (click)="stop()" [disabled]="!running()">⏸ หยุด</button>
+    <button (click)="reset()">↺ รีเซ็ต</button>
+  </div>
+</div>
